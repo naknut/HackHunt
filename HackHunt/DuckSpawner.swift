@@ -20,7 +20,7 @@ enum DuckSkill {
 
 class DuckSpawner {
 
-    public var ducks = [SKShapeNode]()
+    var ducks = [Duck]()
     
     var level = 1
     var numberOfDucks : Int {
@@ -48,20 +48,23 @@ class DuckSpawner {
     
     func spawnInScene(scene : SKScene) {
         for index in 0...numberOfDucks {
-            let fakeDuck = SKShapeNode(circleOfRadius: 10)
-            fakeDuck.name = "FakeDuck"
-            fakeDuck.fillColor = UIColor.redColor()
+            //let fakeDuck = SKShapeNode(circleOfRadius: 10)
+            //fakeDuck.name = "FakeDuck"
+            //fakeDuck.fillColor = UIColor.redColor()
+            let fakeDuck = Duck(imageNamed: "DuckUp1")
+            fakeDuck.xScale = 2
+            fakeDuck.yScale = 2
             
             let nodeWidth = scene.frame.size.width
             //let nodeHeight = node.frame.size.height
             
             fakeDuck.position = CGPointMake(CGFloat(nodeWidth / CGFloat(numberOfDucks) * CGFloat(index)), CGRectGetMidY(scene.frame))
-            
             ducks.append(fakeDuck)
             
             print(fakeDuck.position)
             
             scene.addChild(fakeDuck)
+            fakeDuck.animate()
         }
     }
     

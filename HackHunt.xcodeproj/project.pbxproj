@@ -17,6 +17,7 @@
 		250D403F1BEA5A2600655FD5 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 250D403E1BEA5A2600655FD5 /* Game.xcassets */; };
 		250D40421BEA5A2600655FD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 250D40401BEA5A2600655FD5 /* Main.storyboard */; };
 		250D40441BEA5A2600655FD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 250D40431BEA5A2600655FD5 /* Assets.xcassets */; };
+		250D404E1BEA7F9F00655FD5 /* Duck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250D404D1BEA7F9F00655FD5 /* Duck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		250D40411BEA5A2600655FD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		250D40431BEA5A2600655FD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		250D40451BEA5A2600655FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250D404D1BEA7F9F00655FD5 /* Duck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */,
 				116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */,
 				116ED5A91BEA738100AEFB64 /* GunSpriteNode.swift */,
+				250D404D1BEA7F9F00655FD5 /* Duck.swift */,
 			);
 			path = HackHunt;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				250D403D1BEA5A2600655FD5 /* GameViewController.swift in Sources */,
 				116ED5A81BEA66F100AEFB64 /* DuckSpawner.swift in Sources */,
 				250D40371BEA5A2600655FD5 /* AppDelegate.swift in Sources */,
+				250D404E1BEA7F9F00655FD5 /* Duck.swift in Sources */,
 				116ED5A61BEA66A600AEFB64 /* FakeDuck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
