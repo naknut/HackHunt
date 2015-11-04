@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116ED5A61BEA66A600AEFB64 /* FakeDuck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */; };
+		116ED5A81BEA66F100AEFB64 /* DuckSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */; };
 		250D40371BEA5A2600655FD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250D40361BEA5A2600655FD5 /* AppDelegate.swift */; };
 		250D40391BEA5A2600655FD5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 250D40381BEA5A2600655FD5 /* GameScene.sks */; };
 		250D403B1BEA5A2600655FD5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250D403A1BEA5A2600655FD5 /* GameScene.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDuck.swift; sourceTree = "<group>"; };
+		116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckSpawner.swift; sourceTree = "<group>"; };
 		250D40331BEA5A2600655FD5 /* HackHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		250D40361BEA5A2600655FD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		250D40381BEA5A2600655FD5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				250D40401BEA5A2600655FD5 /* Main.storyboard */,
 				250D40431BEA5A2600655FD5 /* Assets.xcassets */,
 				250D40451BEA5A2600655FD5 /* Info.plist */,
+				116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */,
+				116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */,
 			);
 			path = HackHunt;
 			sourceTree = "<group>";
@@ -144,7 +150,9 @@
 			files = (
 				250D403B1BEA5A2600655FD5 /* GameScene.swift in Sources */,
 				250D403D1BEA5A2600655FD5 /* GameViewController.swift in Sources */,
+				116ED5A81BEA66F100AEFB64 /* DuckSpawner.swift in Sources */,
 				250D40371BEA5A2600655FD5 /* AppDelegate.swift in Sources */,
+				116ED5A61BEA66A600AEFB64 /* FakeDuck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +294,7 @@
 				250D404A1BEA5A2600655FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
