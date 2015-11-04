@@ -17,6 +17,7 @@ class GameScene: SKScene {
     }()
     
     var duckSpawner = DuckSpawner()
+    var ducksKilled = 0
     
     var controller : GCController? {
         didSet {
@@ -31,10 +32,15 @@ class GameScene: SKScene {
             }
             
             controller?.microGamepad?.buttonA.valueChangedHandler = { (button : GCControllerButtonInput, value : Float, pressed : Bool) -> Void in
-                if pressed {                    
+                if pressed {
                     for duck in self.duckSpawner.ducks {
                         if(self.dot.intersectsNode(duck)) {
                             self.removeChildrenInArray([duck])
+                            self.ducksKilled++
+                            if(self.ducksKilled >= self.duckSpawner.ducks.count) {
+                                self.ducksKilled = 0
+                                self.duckSpawner.spawnInScene(self)
+                            }
                         }
                     }
                 }
