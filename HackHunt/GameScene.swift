@@ -11,8 +11,15 @@ import GameController
 
 class GameScene: SKScene {
     
-    let dot : SKSpriteNode = {
-        let dotNode = SKSpriteNode(color: UIColor.redColor(), size: CGSizeMake(20, 20))
+    var randomY : CGFloat = CGFloat()
+    var randomX : CGFloat = CGFloat()
+    var waitRandomXandY : SKAction = SKAction()
+    
+    let dot : SKShapeNode = {
+        let dotNode = SKShapeNode(circleOfRadius: 5)
+        dotNode.fillColor = UIColor.redColor()
+        dotNode.strokeColor = UIColor.redColor()
+        dotNode.zPosition = 1001
         return dotNode
     }()
     
@@ -27,7 +34,9 @@ class GameScene: SKScene {
                 if let directionPad = element as? GCControllerDirectionPad {
                     let x = CGFloat(directionPad.xAxis.value) * (self.frame.size.width * 0.5) + (self.frame.size.width * 0.5)
                     let y = CGFloat(directionPad.yAxis.value) * (self.frame.size.height * 0.5) + (self.frame.size.height * 0.5)
+                    
                     self.dot.position = CGPointMake(x, y)
+                    self.gun.position = CGPointMake(x, self.gun.position.y)
                 }
             }
             
@@ -37,10 +46,8 @@ class GameScene: SKScene {
                         if(self.dot.intersectsNode(duck)) {
                             self.removeChildrenInArray([duck])
                             self.ducksKilled++
-                            if(self.ducksKilled >= self.duckSpawner.ducks.count) {
-                                self.ducksKilled = 0
-                                self.duckSpawner.spawnInScene(self)
-                            }
+                            self.scoreLabel.text = "\(self.ducksKilled) killed ducks"
+                            self.duckSpawner.spawnInScene(self)
                         }
                     }
                     
@@ -49,6 +56,13 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    let scoreLabel : SKLabelNode = {
+        let theLabelNode = SKLabelNode(text: "0 ducks")
+        theLabelNode.zPosition = 1001
+//        theLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Right
+        return theLabelNode
+    }()
     
     let gun : GunSpriteNode = {
         let gunNode = GunSpriteNode(imageNamed: "Gun1")
@@ -74,6 +88,8 @@ class GameScene: SKScene {
         
         addBackdrop()
         
+        addScoreLabel()
+        
         // Add the gun
         self.gun.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetHeight(self.gun.frame) - 30)
         print(self.gun.position)
@@ -81,8 +97,36 @@ class GameScene: SKScene {
         
         // Start the duck spawner
         //self.duckSpawner = DuckSpawner()
-        self.duckSpawner.level = 3
+        self.duckSpawner.level = 1
         self.duckSpawner.spawnInScene(self)
+        
+        let wait :SKAction = SKAction.waitForDuration(1.0, withRange: 0.5)
+        let randomYAction : SKAction = SKAction.runBlock { () -> Void in
+            
+            let lowerValue = 5
+            let upperValue = 10
+            let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) +   lowerValue
+            
+            self.randomY = CGFloat(result)
+        }
+        let randomXAction : SKAction = SKAction.runBlock { () -> Void in
+            
+            let lowerValue = -40
+            let upperValue = 40
+            let result = Int(arc4random_uniform(UInt32(upperValue - lowerValue + 1))) +   lowerValue
+            
+            self.randomX = CGFloat(result)
+        }
+        
+        waitRandomXandY = SKAction.sequence([wait, randomYAction, randomXAction])
+        self.runAction(SKAction.repeatActionForever(waitRandomXandY))
+        
+        
+    }
+    
+    func addScoreLabel() {
+        scoreLabel.position = CGPointMake(CGRectGetMinX(self.frame) + scoreLabel.frame.size.width/2 + 80, 110)
+        self.addChild(scoreLabel)
     }
     
     func addBackdrop() {
@@ -98,6 +142,24 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        self.moveUpDown()
+        
+        
+    }
+    
+    func moveUpDown() {
+        
+        let movementAction : SKAction = SKAction.moveByX(randomX, y: randomY, duration: 10)
+        
+        self.enumerateChildNodesWithName("Bird") { (node : SKNode!, stop: UnsafeMutablePointer <ObjCBool>) -> Void in
+            node.runAction(SKAction.repeatActionForever(movementAction), completion: { () -> Void in
+            })
+            
+            if node.position.y > self.frame.size.height || node.position.x < 0 || node.position.x > self.frame.size.width {
+                node.removeFromParent()
+                self.duckSpawner.spawnInScene(self)
+            }
+        }
     }
     
     // MARK : GameController

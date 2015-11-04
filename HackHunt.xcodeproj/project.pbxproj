@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		114874471BEA8D5C00CE3FF6 /* AnimationFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114874461BEA8D5C00CE3FF6 /* AnimationFile.swift */; };
 		116ED5A61BEA66A600AEFB64 /* FakeDuck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */; };
 		116ED5A81BEA66F100AEFB64 /* DuckSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */; };
 		116ED5AA1BEA738100AEFB64 /* GunSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116ED5A91BEA738100AEFB64 /* GunSpriteNode.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		114874461BEA8D5C00CE3FF6 /* AnimationFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFile.swift; sourceTree = "<group>"; };
 		116ED5A51BEA66A600AEFB64 /* FakeDuck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDuck.swift; sourceTree = "<group>"; };
 		116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckSpawner.swift; sourceTree = "<group>"; };
 		116ED5A91BEA738100AEFB64 /* GunSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GunSpriteNode.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				116ED5A71BEA66F100AEFB64 /* DuckSpawner.swift */,
 				116ED5A91BEA738100AEFB64 /* GunSpriteNode.swift */,
 				250D404D1BEA7F9F00655FD5 /* Duck.swift */,
+				114874461BEA8D5C00CE3FF6 /* AnimationFile.swift */,
 			);
 			path = HackHunt;
 			sourceTree = "<group>";
@@ -114,6 +117,7 @@
 				TargetAttributes = {
 					250D40321BEA5A2600655FD5 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 358T25GKP2;
 					};
 				};
 			};
@@ -160,6 +164,7 @@
 				116ED5A81BEA66F100AEFB64 /* DuckSpawner.swift in Sources */,
 				250D40371BEA5A2600655FD5 /* AppDelegate.swift in Sources */,
 				250D404E1BEA7F9F00655FD5 /* Duck.swift in Sources */,
+				114874471BEA8D5C00CE3FF6 /* AnimationFile.swift in Sources */,
 				116ED5A61BEA66A600AEFB64 /* FakeDuck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +269,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HackHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.hackhunt.HackHunt;
@@ -276,6 +282,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HackHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.hackhunt.HackHunt;

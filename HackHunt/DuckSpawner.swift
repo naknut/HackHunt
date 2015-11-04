@@ -34,7 +34,7 @@ class DuckSpawner {
         case 0:
             return 1
         case 1:
-            return 2
+            return 1
         case 2:
             return 2
         case 3:
@@ -47,23 +47,21 @@ class DuckSpawner {
     }
     
     func spawnInScene(scene : SKScene) {
-        for index in 0...numberOfDucks {
-            //let fakeDuck = SKShapeNode(circleOfRadius: 10)
-            //fakeDuck.name = "FakeDuck"
-            //fakeDuck.fillColor = UIColor.redColor()
+        print("numberOfDucks: \(numberOfDucks)")
+        for index in 0..<numberOfDucks {
             let fakeDuck = Duck(imageNamed: "DuckUp1")
+            fakeDuck.name = "Bird"
+            fakeDuck.texture?.filteringMode = .Nearest
             fakeDuck.xScale = 2
             fakeDuck.yScale = 2
             
             let nodeWidth = scene.frame.size.width
-            //let nodeHeight = node.frame.size.height
             
-            fakeDuck.position = CGPointMake(CGFloat(nodeWidth / CGFloat(numberOfDucks) * CGFloat(index)), CGRectGetMidY(scene.frame))
+            fakeDuck.position = CGPointMake(CGRectGetMidX(scene.frame), CGRectGetMidY(scene.frame) - 200)
             ducks.append(fakeDuck)
             
-            print(fakeDuck.position)
-            
             scene.addChild(fakeDuck)
+            
             fakeDuck.animate()
         }
     }
