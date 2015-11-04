@@ -20,6 +20,8 @@ enum DuckSkill {
 
 class DuckSpawner {
 
+    public var ducks = [SKShapeNode]()
+    
     var level = 1
     var numberOfDucks : Int {
         get {
@@ -54,6 +56,8 @@ class DuckSpawner {
             //let nodeHeight = node.frame.size.height
             
             fakeDuck.position = CGPointMake(CGFloat(nodeWidth / CGFloat(numberOfDucks) * CGFloat(index)), CGRectGetMidY(scene.frame))
+            
+            ducks.append(fakeDuck)
             
             print(fakeDuck.position)
             

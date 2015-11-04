@@ -16,6 +16,9 @@ class GameScene: SKScene {
         return dotNode
     }()
     
+    var duckSpawner = DuckSpawner()
+    var ducksKilled = 0
+    
     var controller : GCController? {
         didSet {
             print("attachedToDevice: \(controller?.attachedToDevice)")
@@ -30,17 +33,16 @@ class GameScene: SKScene {
             
             controller?.microGamepad?.buttonA.valueChangedHandler = { (button : GCControllerButtonInput, value : Float, pressed : Bool) -> Void in
                 if pressed {
-                    let sprite = SKSpriteNode(imageNamed:"Spaceship")
-                    
-                    sprite.xScale = 0.25
-                    sprite.yScale = 0.25
-                    sprite.position = self.dot.position
-                    
-                    let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-                    
-                    sprite.runAction(SKAction.repeatActionForever(action))
-                    
-                    self.addChild(sprite)
+                    for duck in self.duckSpawner.ducks {
+                        if(self.dot.intersectsNode(duck)) {
+                            self.removeChildrenInArray([duck])
+                            self.ducksKilled++
+                            if(self.ducksKilled >= self.duckSpawner.ducks.count) {
+                                self.ducksKilled = 0
+                                self.duckSpawner.spawnInScene(self)
+                            }
+                        }
+                    }
                     
                     self.gun.shoot()
                 }
@@ -73,14 +75,14 @@ class GameScene: SKScene {
         addBackdrop()
         
         // Add the gun
-        self.gun.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetHeight(self.gun.frame) - 40)
+        self.gun.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetHeight(self.gun.frame) - 30)
         print(self.gun.position)
         self.addChild(self.gun)
         
         // Start the duck spawner
-        let duckSpawner = DuckSpawner()
-        duckSpawner.level = 3
-        duckSpawner.spawnInScene(self)
+        //self.duckSpawner = DuckSpawner()
+        self.duckSpawner.level = 3
+        self.duckSpawner.spawnInScene(self)
     }
     
     func addBackdrop() {
