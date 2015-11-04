@@ -41,10 +41,21 @@ class GameScene: SKScene {
                     sprite.runAction(SKAction.repeatActionForever(action))
                     
                     self.addChild(sprite)
+                    
+                    self.gun.shoot()
                 }
             }
         }
     }
+    
+    let gun : GunSpriteNode = {
+        let gunNode = GunSpriteNode(imageNamed: "Gun1")
+        gunNode.texture?.filteringMode = .Nearest
+        gunNode.zPosition = 1000
+        gunNode.xScale = 2
+        gunNode.yScale = 2
+        return gunNode
+    }()
     
     override func didMoveToView(view: SKView) {
         
@@ -60,6 +71,11 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor(red:0.21, green:0.75, blue:1, alpha:1)
         
         addBackdrop()
+        
+        // Add the gun
+        self.gun.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetHeight(self.gun.frame) - 40)
+        print(self.gun.position)
+        self.addChild(self.gun)
         
         // Start the duck spawner
         let duckSpawner = DuckSpawner()
