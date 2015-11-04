@@ -61,8 +61,10 @@ class DuckSpawner {
             ducks.append(fakeDuck)
             
             scene.addChild(fakeDuck)
-            
+
             fakeDuck.animate()
+            fakeDuck.movement = .Up
+
         }
     }
     
